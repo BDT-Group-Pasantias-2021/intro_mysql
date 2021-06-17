@@ -18,13 +18,13 @@ BEGIN
                 
 						-- Validar password
 						IF (_password <> null AND _password <> '') THEN
-							IF (_password = _confirmPassword) THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
+							IF (_password = _confirmPassword ) THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
 								INSERT INTO `list_user` () VALUES () -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
                                 -- Mensaje de exito
                                 SET _message = '';
                             ELSE
 								-- Error de password
-								SET _message = 'Las contraseñas no coinciden.';
+								SET _message = 'Contraseña incorrecta!';
                             END IF;
 						ELSE
 							-- Error de password
