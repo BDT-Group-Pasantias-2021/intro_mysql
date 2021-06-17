@@ -19,16 +19,17 @@ BEGIN
 						-- Validar password
 						IF (_password <> null AND _password <> '') THEN
 							IF (_password = _confirmPassword ) THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
-								INSERT INTO `list_user` () VALUES () -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
+								
+								INSERT INTO `list_user` (`name_user`, `email_user`,`password_user`) VALUES (_name, _email ,md5(_password) ) -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
                                 -- Mensaje de exito
-                                SET _message = '';
+                                SET _message = 'Se ha agregado satisfactoriamente!';
                             ELSE
 								-- Error de password
 								SET _message = 'Contraseña incorrecta!';
                             END IF;
 						ELSE
 							-- Error de password
-							SET _message = '';
+							SET _message = 'Ingrese una contraseña';
 						END IF;
 	
 					
