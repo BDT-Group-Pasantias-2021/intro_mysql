@@ -1,4 +1,4 @@
-CREATE FUNCTION `add_user`(_name VARCHAR(250), _email VARCHAR(250), _password TEXT) RETURNS TEXT
+CREATE FUNCTION `add_user`(_name VARCHAR(250), _email VARCHAR(250), _password TEXT, _confirmPassword TEXT) RETURNS TEXT
 BEGIN
 	
     DECLARE _message TEXT;
@@ -18,13 +18,13 @@ BEGIN
                 
 						-- Validar password
 						IF (_password <> null AND _password <> '') THEN
-							IF () THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
+							IF (_password = _confirmPassword) THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
 								INSERT INTO `list_user` () VALUES () -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
                                 -- Mensaje de exito
                                 SET _message = '';
                             ELSE
 								-- Error de password
-								SET _message = '';
+								SET _message = 'Las contraseñas no coinciden.';
                             END IF;
 						ELSE
 							-- Error de password
