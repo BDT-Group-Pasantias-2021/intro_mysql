@@ -20,7 +20,7 @@ BEGIN
 						IF (_password <> null AND _password <> '') THEN
 							IF (_password = _confirmPassword ) THEN -- COMPARAR QUE EL PASSWORD SEA IGUAL
 								
-								INSERT INTO `list_user` (`name_user`, `email_user`,`password_user`) VALUES (_name, _email ,md5(_password) ) -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
+								INSERT INTO `list_user` (`name_user`, `email_user`,`password_user`) VALUES (_name, _email ,md5(_password) ); -- INSERTAR DATOS Y GUARDAR COMO MD5 LA CLAVE
                                 -- Mensaje de exito
                                 SET _message = 'Se ha agregado satisfactoriamente!';
                             ELSE
@@ -36,7 +36,7 @@ BEGIN
 					ELSE
 						-- Error de email
 						SET _message = 'Este email ya se encuentra registrado.';
-                    END IF 
+                    END IF ;
                 ELSE
 					-- Error de email
 					SET _message = 'Ingrese un email valido!';
