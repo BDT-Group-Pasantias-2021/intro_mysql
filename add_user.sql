@@ -13,7 +13,7 @@ BEGIN
             -- Validar email
             IF (_email <> null AND _email <> '') THEN
 				IF () THEN -- USAR LOCATE
-					IF () THEN -- VERIFICAR QUE NO EXISTA
+					IF NOT EXISTS (SELECT * from `list_user` WHERE (email_user =_email)) THEN -- VERIFICAR QUE NO EXISTA
                 
                 
 						-- Validar password
@@ -34,7 +34,7 @@ BEGIN
 					
 					ELSE
 						-- Error de email
-						SET _message = '';
+						SET _message = 'Este email ya se encuentra registrado.';
                     END IF 
                 ELSE
 					-- Error de email
