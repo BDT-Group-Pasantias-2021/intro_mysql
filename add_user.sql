@@ -12,7 +12,7 @@ BEGIN
         
             -- Validar email
             IF (_email <> null AND _email <> '') THEN
-				IF () THEN -- USAR LOCATE
+				IF (LOCATE('@', _email)) THEN -- USAR LOCATE
 					IF NOT EXISTS (SELECT * from `list_user` WHERE (email_user =_email)) THEN -- VERIFICAR QUE NO EXISTA
                 
                 
@@ -39,17 +39,17 @@ BEGIN
                     END IF 
                 ELSE
 					-- Error de email
-					SET _message = '';
+					SET _message = 'Ingrese un email valido!';
                 END IF;
             ELSE
 				-- Error de email
-				SET _message = '';
+				SET _message = 'Ingrese el email';
             END IF;
             
             
         ELSE
 			-- Error de nombre
-			SET _message = '';
+			SET _message = 'Ingrese un nombre';
         END IF;
     
     RETURN _message;
